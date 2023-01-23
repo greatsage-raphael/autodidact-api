@@ -299,3 +299,32 @@ Using HTTP status codes in error handling is an important best practice in API d
 500 Internal Server Error: This status code would be used to indicate that there is an error with the server and it is unable to process the request. For example, if the server encounters an unexpected error while processing a user's request, it would respond with a 500 Internal Server Error status code to indicate that there is a problem with the server
 By using appropriate HTTP status codes in error handling, developers can quickly identify and troubleshoot any issues with their requests, making it easier to debug and fix problems with the API.
 
+## API Health Check
+Health check endpoints: One way to check the health of an API is to create a dedicated endpoint that returns a simple response, such as "200 OK" when the API is healthy. This endpoint can be pinged regularly by a monitoring tool or service to check the API's status. It can be a simple endpoint that returns a simple response such as "200 OK" or "404 Not Found" when the API is healthy or not healthy.
+
+Third-party monitoring tools: Services like New Relic, Datadog, and Prometheus can be used to monitor the health of an API by collecting metrics and generating alerts when there are issues. These services can gather metrics and traces from your API, such as request/response times, error rates, and other performance indicators. They also include alerting features that can notify you when certain thresholds are exceeded, such as high error rates or slow response times.
+
+Log monitoring: Monitoring the logs of the API can also be used to detect and diagnose problems. Services like Loggly or Splunk can be used to collect and analyze log data for error messages, high response times, or other indicators of poor health. Log monitoring allows you to track and understand the behavior of your application and identify the root cause of issues.
+
+Automated testing: Automated testing frameworks like Jest or Mocha can be used to test the API's endpoints and check for any errors or failures. Automated testing allows you to catch bugs and issues early on, before they get to production. It also helps you to verify that the changes you made to your application did not break any existing functionality.
+
+Automatic Restart: you can use a process manager like PM2, Supervisor, or systemd to automatically restart the API service if it crashes. This is useful for preventing downtimes and ensuring that your application is always running. The process manager will automatically detect when the application is not running, and restart it.
+
+To apply health checks to Autodidact, we can create dedicated endpoints that return a simple response, such as "200 OK" when the app is healthy. These endpoints can be pinged regularly by a monitoring tool or service to check the app's status. Here are some examples of health check endpoints for Autodidact:
+
+https://autodidact.com/api/health: This endpoint can return a simple "200 OK" response when the app is healthy.
+
+https://autodidact.com/api/disciplines: This endpoint checks the availability of all disciplines offered in the app, and returns a "200 OK" response if they are available, otherwise it returns a "404 Not Found" response.
+
+https://autodidact.com/api/rewards: This endpoint checks the availability of all rewards offered in the app, and returns a "200 OK" response if they are available, otherwise it returns a "404 Not Found" response.
+
+https://autodidact.com/api/user/{user_id}/progress: This endpoint checks the progress of the user in each discipline and returns a "200 OK" response if the user has made progress, otherwise it returns a "404 Not Found" response.
+
+https://autodidact.com//api/server: This endpoint checks the availability of the server and returns a "200 OK" response if it is available, otherwise it returns a "404 Not Found" response.
+
+These are just examples, and the actual implementation will depend on the specifics of your Autodidact app, but this should give you an idea of how to create health check endpoints. It is also important to monitor the logs of the app and use third-party monitoring tools like New Relic, Datadog, and Prometheus to monitor the health of the app by collecting metrics and generating alerts when there are issues. The automatic restart using process managers like PM2, Supervisor, or systemd can also be used to automatically restart the API service if it crashes.
+
+
+
+
+

@@ -13,7 +13,7 @@ Begin designing the server architecture with scalability in mind, using load bal
 Install and set up Node.js and any necessary dependencies
 Set up a version control system (such as Git) to manage the codebase
 Create a project structure and organize the codebase in a logical and easy-to-navigate manner
-Begin researching andimplementing load balancing and test its effectiveness in distributing traffic.
+Begin researching and implementing load balancing and test its effectiveness in distributing traffic.
 Begin researching and evaluating different solutions for monitoring and logging, such as Prometheus and Elasticsearch.
 
 ### Week 3: Data Storage and Modeling
@@ -85,62 +85,8 @@ Users: This resource provides access to information about individual users, incl
 
 ## Data models and schemas that can be used to represent the data stored in the Autodidact database:
 
-Course Model
-Copy code
-{
-    _id: ObjectId,
-    title: String,
-    description: String,
-    instructor: String,
-    modules: [
-        {
-            name: String,
-            content: String,
-            quizzes: [
-                {
-                    question: String,
-                    options: [String],
-                    answer: String
-                }
-            ]
-        }
-    ],
-    createdAt: Date,
-    updatedAt: Date
-}
-User Model
-Copy code
-{
-    _id: ObjectId,
-    name: String,
-    email: String,
-    photo: String,
-    courses: [
-        {
-            courseId: ObjectId,
-            progress: Number,
-            completed: Boolean
-        }
-    ],
-    heatMap: [
-        {
-            date: Date,
-            activity: Number
-        }
-    ],
-    createdAt: Date,
-    updatedAt: Date
-}
-Note: Each user is associated with a unique ObjectId and each course is also associated with a unique ObjectId. Each user has an array of the courses they have taken and the progress they have made. The heatMap field shows the user's activity over time.
+Course Model :
 
-Note: The above models are just an example and you can add or remove fields as per the requirement of your app.
-
-
-wrap each of our models in an array to allow for easy iteration
-Sure, to allow for easy iteration, you can wrap each of the models in an array, like this:
-
-Course Model
-Copy code
 [
   {
     _id: ObjectId,
@@ -163,53 +109,12 @@ Copy code
     createdAt: Date,
     updatedAt: Date
   },
-  {
-    _id: ObjectId,
-    title: String,
-    description: String,
-    instructor: String,
-    modules: [
-        {
-            name: String,
-            content: String,
-            quizzes: [
-                {
-                    question: String,
-                    options: [String],
-                    answer: String
-                }
-            ]
-        }
-    ],
-    createdAt: Date,
-    updatedAt: Date
-  }
   ...
 ]
-User Model
-Copy code
+
+User Model:
+
 [
-  {
-    _id: ObjectId,
-    name: String,
-    email: String,
-    photo: String,
-    courses: [
-        {
-            courseId: ObjectId,
-            progress: Number,
-            completed: Boolean
-        }
-    ],
-    heatMap: [
-        {
-            date: Date,
-            activity: Number
-        }
-    ],
-    createdAt: Date,
-    updatedAt: Date
-  },
   {
     _id: ObjectId,
     name: String,
@@ -233,6 +138,7 @@ Copy code
   },
   ...
 ]
+
 By wrapping the models in an array, you can easily iterate through each item and access the data for each course or user. This makes it easier to retrieve, update, or delete specific items within the array, as well as to perform operations on all items in the array.
 
 ## what data base would be best for an app like autodidact
