@@ -38,4 +38,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 # assets
-assets/*.jpeg
+assets/*.jpegnode_modules
+node_modules/
